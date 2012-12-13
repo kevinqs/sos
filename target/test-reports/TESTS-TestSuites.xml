@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="1" hostname="LLR83TFW8" id="0" name="PostTests" package="com.kelitech.sos" tests="4" time="1.185" timestamp="2012-11-13T14:29:07">
+      <properties />
+
+      <testcase classname="com.kelitech.sos.PostTests" name="testSuccess" time="0.967" />
+
+      <testcase classname="com.kelitech.sos.PostTests" name="testContentBlank" time="0.058" />
+
+      <testcase classname="com.kelitech.sos.PostTests" name="testContentNull" time="0.04" />
+
+      <testcase classname="com.kelitech.sos.PostTests" name="testContentExceedMaxSize" time="0.077">
+          <failure message="junit.framework.AssertionFailedError" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError
+	at com.kelitech.sos.PostTests.testContentExceedMaxSize(PostTests.groovy:59)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSuccess--
+--Output from testContentBlank--
+--Output from testContentNull--
+--Output from testContentExceedMaxSize--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSuccess--
+--Output from testContentBlank--
+--Output from testContentNull--
+--Output from testContentExceedMaxSize--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
