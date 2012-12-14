@@ -15,10 +15,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:javascript library="application"/>
-		<r:require modules="jquery182" /> 
-		<r:require modules="custom"/>
-		<r:require modules="jqgrid" /> 
-		
+		<r:require modules="jquery182,dynatree,custom, jqgrid" /> 
 		<r:layoutResources />
 		<g:layoutHead/>
 		
@@ -49,7 +46,28 @@
 				});
 			});
 			
-		
+		  $(function(){
+			    // Attach the dynatree widget to an existing <div id="tree"> element
+			    // and pass the tree options as an argument to the dynatree() function:
+			    $("#navTree").dynatree({
+//			          autoCollapse: true,
+			      minExpandLevel: 1,
+//			          persist: true,
+			      onPostInit: function(isReloading, isError) {
+			        this.reactivate();
+			      },
+			      onActivate: function(node) {
+			        // Use <a> href and target attributes to load the content:
+			        if( node.data.href ){
+			          // Open target
+			          window.open(node.data.href, node.data.target);
+			          // or open target in iframe
+//			                $("[name=contentFrame]").attr("src", node.data.href);
+			        }
+			      }
+			    });
+			  });
+		  
 		
 		</SCRIPT>		
 	</head>
@@ -90,6 +108,29 @@
 		<g:layoutBody/>
 	</div>
 	<div class="ui-layout-west">
+	 	<div id="navTree"> 
+		<ul>
+        <li class="expanded folder">Search engines
+        <ul>
+          <li><a href="http://www.google.com" target="contentFrame">Google (target='contentFrame')</a>
+          <li><a href="http://www.google.com" target="_self">Google (target='_self')</a>
+          <li><a href="http://www.google.com" target="_top" title="This link replaces the current page">Google (target='_top')</a>
+          <li><a href="http://www.bing.com" target="contentFrame">Bing</a>
+          <li><a href="http://www.wolframalpha.com/" target="contentFrame">WolframAlpha</a>
+        </ul>
+        <li class="expanded folder">jQuery
+        <ul>
+          <li><a href="http://www.jquery.com/" target="contentFrame">jQuery</a>
+          <li><a href="http://ui.jquery.com/" target="contentFrame">jQuery UI</a>
+          <li><a href="http://api.jquery.com/" target="contentFrame">API browser</a>
+          <li><a href="http://code.google.com/p/dynatree/" target="contentFrame">Dynatree</a>
+        </ul>
+        <li class="expanded folder">Misc
+        <ul>
+          <li><a href="sample-iframe-1.html" target="contentFrame">Welcome</a>
+        </ul>
+      	</ul>	 	
+	 	</div>
 	</div>
 	
 	<div class="footer" role="contentinfo"></div>

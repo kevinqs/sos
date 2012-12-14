@@ -6,7 +6,7 @@ modules = {
 	jquery182 {
 		resource url:'js/jquery/jquery-1.8.2.js',  disposition: 'head'
 		resource url:'js/jquery/jquery-ui-1.9.1.custom.js',  disposition: 'head'
-		resource url:'css/jquery/jquery.cookies.2.2.0.min.js'
+		resource url:'js/jquery/jquery.cookies.2.2.0.min.js'
 		resource url:'css/jqgrid/jquery-ui-1.9.2.custom.css'
 	}
 	
