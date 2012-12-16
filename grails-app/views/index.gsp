@@ -82,6 +82,11 @@
 		
 	</head>
 	<body>
+	<div class="ui-layout-west">
+	 	<div id="navTree"> 
+	 		<g:render template="/layouts/navTree"/>
+	 	</div>
+	</div>
 	<div class="ui-layout-center">
 		<div id="status" role="complementary">
 			<h1>Application Status</h1>
@@ -120,11 +125,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui-layout-west">
-	 	<div id="navTree"> 
-	 		<g:render template="/layouts/navTree"/>
-	 	</div>
-	</div>
-	
 	</body>
 </html>

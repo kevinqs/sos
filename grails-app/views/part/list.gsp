@@ -6,22 +6,6 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'part.label', default: 'Part')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-part" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div>
-            <div id='message' class="message" style="display:none;"></div>
-            <!-- table tag will hold our grid -->
-            <table id="part_list"></table>
-            <!-- pager will hold our paginator -->
-            <div id="part_list_pager"></div>
-
             <script type="text/javascript">
             /* when the page has finished loading.. execute the follow */
             $(document).ready(function () {
@@ -109,6 +93,29 @@
             }
             
             </script>
+	</head>
+	<body>
+		<div class="ui-layout-west">
+		 	<div id="navTree"> 
+		 		<g:render template="/layouts/navTree"/>
+		 	</div>
+		</div>
+		<div class="ui-layout-center">
+	
+			<a href="#list-part" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+			<div class="nav" role="navigation">
+				<ul>
+					<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				</ul>
+			</div>
+			<div>
+	            <div id='message' class="message" style="display:none;"></div>
+    	        <!-- table tag will hold our grid -->
+        	    <table id="part_list"></table>
+            	<!-- pager will hold our paginator -->
+            	<div id="part_list_pager"></div>
+			</div>
 		</div>
 	</body>
 </html>
