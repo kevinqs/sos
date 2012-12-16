@@ -24,6 +24,9 @@
 		$(document).ready(function(){		
 				// create page layout
 				pageLayout = $('body').layout({
+					center__childOptions:	{
+						//this empty propery is needed to support nested layout.
+					},
 					scrollToBookmarkOnLoad:		false // handled by custom code so can 'unhide' section first
 				,	defaults: {
 					}
@@ -33,26 +36,14 @@
 					,	closable:				false
 					,	resizable:				false
 					}
-				,	west: {
-						size:					250
-					,	spacing_closed:			22
-					,	togglerLength_closed:	140
-					,	togglerAlign_closed:	"top"
-					,	togglerContent_closed:	"C<BR>o<BR>n<BR>t<BR>e<BR>n<BR>t<BR>s"
-					,	togglerTip_closed:		"Open & Pin Contents"
-					,	sliderTip:				"Slide Open Contents"
-					,	slideTrigger_open:		"mouseover"
-					}
 				});
-			});
-			
-		  $(function(){
+
 			    // Attach the dynatree widget to an existing <div id="tree"> element
 			    // and pass the tree options as an argument to the dynatree() function:
 			    $("#navTree").dynatree({
-//			          autoCollapse: true,
+			      //autoCollapse: true,
 			      minExpandLevel: 1,
-//			          persist: true,
+			      //persist: true,
 			      onPostInit: function(isReloading, isError) {
 			        this.reactivate();
 			      },
@@ -62,12 +53,13 @@
 			          // Open target
 			          window.open(node.data.href, node.data.target);
 			          // or open target in iframe
-//			                $("[name=contentFrame]").attr("src", node.data.href);
+		          //      $("[name=contentFrame]").attr("src", node.data.href);
 			        }
 			      }
 			    });
-			  });
-		  
+				
+			});
+			
 		
 		</SCRIPT>		
 	</head>
@@ -81,11 +73,6 @@
 	</div>
 	<div class="ui-layout-center ui-widget ui-widget-content">
 		<g:layoutBody/>
-	</div>
-	<div class="ui-layout-west">
-	 	<div id="navTree"> 
-	 		<g:render template="/layouts/navTree"/>
-	 	</div>
 	</div>
 	
 	<div class="footer" role="contentinfo"></div>
