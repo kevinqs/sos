@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:javascript library="application"/>
-		<r:require modules="jquery182,dynatree,custom, jqgrid" /> 
+		<r:require modules="jquery18, dynatree, custom, jqgrid" /> 
 		<r:layoutResources />
 		<g:layoutHead/>
 		
@@ -76,35 +76,15 @@
 		<!-- DIV id="logo" class="ui-widget-header">jQuery UI Layout Plug-in</DIV-->
 		<div id="grailsLogo" role="banner" class="ui-widget-header">
 			<a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
-		</div>
-		<g:render template="/layouts/globalNav"/>
+		</DIV>
+		 <g:render template="/layouts/globalNav"/>
 	</div>
 	<div class="ui-layout-center ui-widget ui-widget-content">
 		<g:layoutBody/>
 	</div>
 	<div class="ui-layout-west">
 	 	<div id="navTree"> 
-		<ul>
-        <li class="expanded folder">Search engines
-        <ul>
-          <li><a href="http://www.google.com" target="contentFrame">Google (target='contentFrame')</a>
-          <li><a href="http://www.google.com" target="_self">Google (target='_self')</a>
-          <li><a href="http://www.google.com" target="_top" title="This link replaces the current page">Google (target='_top')</a>
-          <li><a href="http://www.bing.com" target="contentFrame">Bing</a>
-          <li><a href="http://www.wolframalpha.com/" target="contentFrame">WolframAlpha</a>
-        </ul>
-        <li class="expanded folder">jQuery
-        <ul>
-          <li><a href="http://www.jquery.com/" target="contentFrame">jQuery</a>
-          <li><a href="http://ui.jquery.com/" target="contentFrame">jQuery UI</a>
-          <li><a href="http://api.jquery.com/" target="contentFrame">API browser</a>
-          <li><a href="http://code.google.com/p/dynatree/" target="contentFrame">Dynatree</a>
-        </ul>
-        <li class="expanded folder">Misc
-        <ul>
-          <li><a href="sample-iframe-1.html" target="contentFrame">Welcome</a>
-        </ul>
-      	</ul>	 	
+	 		<g:render template="/layouts/navTree"/>
 	 	</div>
 	</div>
 	

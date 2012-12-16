@@ -3,7 +3,7 @@ modules = {
         resource url:'js/application.js'
     }
 	
-	jquery182 {
+	jquery18 {
 		resource url:'js/jquery/jquery-1.8.2.js',  disposition: 'head'
 		resource url:'js/jquery/jquery-ui-1.9.1.custom.js',  disposition: 'head'
 		resource url:'js/jquery/jquery.cookies.2.2.0.min.js'
@@ -11,7 +11,7 @@ modules = {
 	}
 	
 	jqgrid {
-		dependsOn 'jquery182'
+		dependsOn 'jquery18'
 		resource url:'css/jqgrid/ui.jqgrid.css'
 		resource url:'css/jqgrid/custom.css'
 		resource url:'js/jqgrid/i18n/grid.locale-en.js'
@@ -23,14 +23,14 @@ modules = {
 	}
 	
 	dynatree {
-		dependsOn 'jquery182'
+		dependsOn 'jquery18'
 		resource url:'css/dynatree/ui.dynatree.css'
 		resource url:'js/dynatree/jquery.dynatree.js'
 		
 	}
 	
 	custom {
-		dependsOn 'jquery182'
+		dependsOn 'jquery18'
 		resource url:'js/jquery-layout/jquery.layout-latest.js'
 		resource url:'css/custom/documentation.css'
 		resource url:'css/custom/global.css'
