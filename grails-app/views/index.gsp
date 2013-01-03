@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<g:set var="homeSelected" value="current" scope="request" />
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>Welcome to Grails ${homeSelected}</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;

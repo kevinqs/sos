@@ -5,6 +5,11 @@ import grails.converters.JSON
 
 class PartController {
 
+	
+	static navigation = [
+		title:'Part',
+		action:'list'
+	]
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -13,7 +18,7 @@ class PartController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [partInstanceList: Part.list(params), partInstanceTotal: Part.count()]
+        [partInstanceList: Part.list(params), partInstanceTotal: Part.count(), selectedMenu: "parts"]
     }
 	
 	def jq_part_list = {

@@ -9,4 +9,9 @@ class Part {
  	
     static constraints = {
     }
+	
+	static enum Type {
+		DIRECT,INDIRECT
+	}
+
 }

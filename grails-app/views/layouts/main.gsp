@@ -17,29 +17,28 @@
 		<g:javascript library="application"/>
 		<r:require modules="jquery18, dynatree, custom, jqgrid" /> 
 		<r:layoutResources />
+		<nav:resources/>
 		<g:layoutHead/>
 		
 		<SCRIPT type="text/javascript">
 		
-		$(document).ready(function(){		
-				// create page layout
-				pageLayout = $('body').layout({
-					center__childOptions:	{
-						//this empty propery is needed to support nested layout.
-					},
-					scrollToBookmarkOnLoad:		false // handled by custom code so can 'unhide' section first
-				,	defaults: {
-					}
-				,	north: {
-						size:					"auto"
-					,	spacing_open:			0
-					,	closable:				false
-					,	resizable:				false
-					}
-				});
+			$(document).ready(function(){		
+					// create page layout
+					pageLayout = $('body').layout({
+						center__childOptions:	{
+							//this empty propery is needed to support nested layout.
+						},
+						scrollToBookmarkOnLoad:		false // handled by custom code so can 'unhide' section first
+					,	defaults: {
+						}
+					,	north: {
+							size:					"auto"
+						,	spacing_open:			0
+						,	closable:				false
+						,	resizable:				false
+						}
+					});
 
-			    // Attach the dynatree widget to an existing <div id="tree"> element
-			    // and pass the tree options as an argument to the dynatree() function:
 			    $("#navTree").dynatree({
 			      //autoCollapse: true,
 			      minExpandLevel: 1,
@@ -48,12 +47,9 @@
 			        this.reactivate();
 			      },
 			      onActivate: function(node) {
-			        // Use <a> href and target attributes to load the content:
+				      alert('test')
 			        if( node.data.href ){
-			          // Open target
-			          window.open(node.data.href, node.data.target);
-			          // or open target in iframe
-		          //      $("[name=contentFrame]").attr("src", node.data.href);
+			        	$("#center").load(node.data.href);				        
 			        }
 			      }
 			    });
@@ -71,7 +67,7 @@
 		</DIV>
 		 <g:render template="/layouts/globalNav"/>
 	</div>
-	<div class="ui-layout-center ui-widget ui-widget-content">
+	<div class="ui-layout-center ui-widget ui-widget-content" >
 		<g:layoutBody/>
 	</div>
 	

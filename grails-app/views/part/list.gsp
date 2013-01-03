@@ -42,10 +42,9 @@
                   url:'jq_part_list',
                   editurl:'jq_edit_part',
                   datatype: "json",
-                  width:958,
+                  width:758,
                   height:100,
                   altRows:true,
-                  autowidth:true,
                   colNames:['Part Number','Part Description','Color Code', '<g:message code="default.link.skip.label" default="Applicable Car Model"/>'],
                   colModel:[
                     {name:'partNumber', editable:true, editOptions:{size:35}, editrules:{required:true}},
@@ -100,7 +99,7 @@
 		 		<g:render template="/layouts/navTree"/>
 		 	</div>
 		</div>
-		<div class="ui-layout-center">
+		<div id="center" class="ui-layout-center">
 	
 			<a href="#list-part" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 			<div class="nav" role="navigation">

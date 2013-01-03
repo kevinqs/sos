@@ -1,26 +1,15 @@
+
+<g:if test="${selectedMenu == 'parts'}">
+	<g:set var="sosSelected" value="current" scope="page" />
+</g:if>
+<g:elseif test="${homeSelected == 'current'}">
+</g:elseif>
+
 <div id="navigation" class="ui-widget-header">
-	<span class="header-menu">
-		<a href="index.cfm">HOME</a>
+	<span id="home" class="header-menu">
+		<a href="/sos" class="${homeSelected}">HOME</a>
 	</span>
-	<span class="header-menu">
-		<a href="demos.cfm">DEMOS</a>
-	</span>
-	<span class="header-menu">
-		<a href="downloads.cfm">DOWNLOADS</a>
-	</span>
-	<span class="header-menu">
-		<a href="documentation.cfm" class="current">DOCUMENTATION</a>
-	</span>
-	<span class="header-menu">
-		<a href="tips.cfm">TIPS</a>
-	</span>
-	<span class="header-menu">
-		<a href="plugin.cfm">PLUGIN</a>
-	</span>
-	<span class="header-menu">
-		<a href="issues.cfm">ISSUES</a>
-	</span>
-	<span class="header-menu">
-		<a target="_blank" href="http://groups.google.com/group/jquery-ui-layout">DISCUSSION</a>
+	<span id="sos" class="header-menu">
+		<a href="/sos/part/index" class="${sosSelected}"><g:message code="global.menu.sos" default="SOS"/></a>
 	</span>
 </div>
