@@ -2,6 +2,9 @@ package com.kelitech.sos
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
+import org.json.XML
+import groovy.xml.XmlUtil
+
 
 class PartController {
 
@@ -18,8 +21,17 @@ class PartController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [partInstanceList: Part.list(params), partInstanceTotal: Part.count(), selectedMenu: "parts"]
+		def xml = new XmlSlurper().parse(new File("src/config/navigation.xml"))
+		def xmlStr = XmlUtil.serialize(xml)
+		def json = XML.toJSONObject(XmlUtil.serialize(xml))
+		def navTree = json.getJSONObject("navigationtree").get("children")
+		
+        [partInstanceList: Part.list(params), partInstanceTotal: Part.count(), selectedMenu: "parts", navigationTree: navTree]
     }
+	
+	def listAjax() {
+		render(template: 'partListBody')
+	}
 	
 	def jq_part_list = {
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)

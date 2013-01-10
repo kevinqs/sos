@@ -42,12 +42,13 @@
 			    $("#navTree").dynatree({
 			      //autoCollapse: true,
 			      minExpandLevel: 1,
+			      children: ${navigationTree},
 			      //persist: true,
+			      autoFocus:true,
 			      onPostInit: function(isReloading, isError) {
 			        this.reactivate();
 			      },
 			      onActivate: function(node) {
-				      alert('test')
 			        if( node.data.href ){
 			        	$("#center").load(node.data.href);				        
 			        }

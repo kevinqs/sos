@@ -165,3 +165,7 @@ pip-log.txt
 
 # local changes
 target/
+target-eclipse/
+target/test-reports/html
+target/test-reports/plain
+

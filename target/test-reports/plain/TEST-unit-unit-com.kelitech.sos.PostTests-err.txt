@@ -1,4 +1,0 @@
---Output from testSuccess--
---Output from testContentBlank--
---Output from testContentNull--
---Output from testContentExceedMaxSize--

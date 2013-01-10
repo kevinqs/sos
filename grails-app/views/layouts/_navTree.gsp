@@ -1,6 +1,6 @@
 <ul>
 	<li class="Parts">Search engines
-   		<a href="/sos/part/index">Parts</a>
+   		<a href="/sos/part/listAjax">Parts</a>
    	</li>
    	<li class="expanded folder">jQuery
    		<ul>
