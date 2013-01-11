@@ -26,7 +26,11 @@ class PartController {
 		def json = XML.toJSONObject(XmlUtil.serialize(xml))
 		def navTree = json.getJSONObject("navigationtree").get("children")
 		
-        [partInstanceList: Part.list(params), partInstanceTotal: Part.count(), selectedMenu: "parts", navigationTree: navTree]
+        [partInstanceList: Part.list(params), 
+		 partInstanceTotal: Part.count(), 
+		 selectedMenu: "parts", 
+		 navigationTree: navTree, 
+		 pageTemplate: "/part/partListBody"]
     }
 	
 	def listAjax() {

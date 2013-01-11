@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <navigationtree>
-		<children title='配件'>
+		<children title='配件' href="/sos/part/listAjax" focus='true' activate="true">
+		</children>
+		<children title='second'/>
+		<children title='third'>
 		    <children title='1.1'/>
 		    <children title='1.2'/>
 			<children title='1.3'/>
-		</children>
-		<children title='second'/>
-		<children title='third' />
+		</children>		    
 </navigationtree>

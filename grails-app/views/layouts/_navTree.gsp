@@ -13,7 +13,7 @@
         	<li><a href="http://code.google.com/p/dynatree/" target="contentFrame">Dynatree</a>
         	</li>
       	</ul>
-	</li>
+	</li> 
     <li class="expanded folder">Misc
     	<ul>
         	<li><a href="sample-iframe-1.html" target="contentFrame">Welcome</a></li>
