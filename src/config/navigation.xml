@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <navigationtree>
-		<children title='配件' href="/sos/part/listAjax" focus='true' activate="true">
+		<children title='零件' href="/sos/part/listAjax" focus='true' activate="true">
 		</children>
-		<children title='second'/>
+		<children title='直接物料' href="/sos/workPostPart/listAjax" focus='true'>
+		</children>
+				<children title='second'/>
 		<children title='third'>
 		    <children title='1.1'/>
 		    <children title='1.2'/>

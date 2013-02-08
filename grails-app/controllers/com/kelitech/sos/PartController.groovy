@@ -2,8 +2,13 @@ package com.kelitech.sos
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
+
+import org.hibernate.exception.ConstraintViolationException;
 import org.json.XML
 import groovy.xml.XmlUtil
+
+import java.lang.reflect.UndeclaredThrowableException;
+import java.sql.SQLException
 
 
 class PartController {
@@ -48,13 +53,10 @@ class PartController {
 				  ], id: it.id]
 		  }
 		  def jsonData= [rows: jsonCells]
+		  JSON json = jsonData as JSON;
 		  render jsonData as JSON
 	}
   
-
-    def create() {
-        [partInstance: new Part(params)]
-    }
 
     def save() {
         def partInstance = new Part(params)
@@ -65,17 +67,6 @@ class PartController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'part.label', default: 'Part'), partInstance.id])
         redirect(action: "show", id: partInstance.id)
-    }
-
-    def show(Long id) {
-        def partInstance = Part.get(id)
-        if (!partInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'part.label', default: 'Part'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [partInstance: partInstance]
     }
 
     def edit(Long id) {
@@ -118,25 +109,6 @@ class PartController {
         redirect(action: "show", id: partInstance.id)
     }
 
-    def delete(Long id) {
-        def partInstance = Part.get(id)
-        if (!partInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'part.label', default: 'Part'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            partInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'part.label', default: 'Part'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'part.label', default: 'Part'), id])
-            redirect(action: "show", id: id)
-        }
-    }
-	
 	// return JSON list of customers
 	def jq_customer_list = {
 	  def sortIndex = params.sidx ?: 'partNumber'
@@ -208,10 +180,16 @@ class PartController {
 		  for (partId in idList) {
 			  part = Part.get(partId)
 			  if (part) {
-				// delete part
-				part.delete()
-				message = "Part ${part.partNumber} Deleted"
-				state = "OK"
+				  try {
+					  // delete part
+					  part.delete(flush:true)
+					  message = "Part ${part.partNumber} Deleted"
+					  state = "OK"
+				  } catch (Exception sqle) {
+				  	  message = "Cannot delete part:${part.partNumber},  it's in use"
+						state = "Error"
+				  }
+			  
 			  }
 		  }
 		  break;
