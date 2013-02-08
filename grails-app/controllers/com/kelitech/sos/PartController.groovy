@@ -1,14 +1,9 @@
 package com.kelitech.sos
 
-import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.json.XML
 import groovy.xml.XmlUtil
-
-import java.lang.reflect.UndeclaredThrowableException;
-import java.sql.SQLException
 
 
 class PartController {
@@ -109,49 +104,6 @@ class PartController {
         redirect(action: "show", id: partInstance.id)
     }
 
-	// return JSON list of customers
-	def jq_customer_list = {
-	  def sortIndex = params.sidx ?: 'partNumber'
-	  def sortOrder  = params.sord ?: 'asc'
-
-	  def maxRows = Integer.valueOf(params.rows)
-	  def currentPage = Integer.valueOf(params.page) ?: 1
-	  def rowOffset = currentPage == 1 ? 0 : (currentPage - 1) * maxRows
-
-	  def parts = Part.createCriteria().list(max:maxRows, offset:rowOffset) {
-
-			// first name case insensitive where the field begins with the search term
-			if (params.partNumber)
-				ilike('partNumber',params.partNumber + '%')
-
-			// last name case insensitive where the field begins with the search term
-			if (params.partDescription)
-				ilike('partDescription',params.partDescription + '%')
-
-			// age search where the age Equals the search term
-			if (params.colorCode)
-				eq('age', Integer.valueOf(params.colorCode))
-
-		
-			// set the order and direction
-			order(sortIndex, sortOrder).ignoreCase()
-	  }
-
-	  def totalRows = parts.totalCount
-	  def numberOfPages = Math.ceil(totalRows / maxRows)
-
-	  def jsonCells = parts.collect {
-			[cell: [it.firstName,
-					it.lastName,
-					it.age,
-					it.emailAddress
-				], id: it.id]
-		}
-		def jsonData= [rows: jsonCells,page:currentPage,records:totalRows,total:numberOfPages]
-		render jsonData as JSON
-	}
-
-
 	def jq_edit_part = {
 	  def part = null
 	  def message = ""
@@ -189,7 +141,6 @@ class PartController {
 				  	  message = "Cannot delete part:${part.partNumber},  it's in use"
 						state = "Error"
 				  }
-			  
 			  }
 		  }
 		  break;
