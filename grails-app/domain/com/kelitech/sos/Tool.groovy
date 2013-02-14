@@ -2,6 +2,7 @@ package com.kelitech.sos
 
 class Tool {
 
+	String sku
 	String name
 	String model
 	String parameter

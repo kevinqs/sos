@@ -52,17 +52,16 @@
                              	{
                             	 	dataUrl:'/sos/workPostPart/part_list_as_options',
                             	 	buildSelect: function (data) {
-                                	 				
-                            	 					var retValue = $.parseJSON(data);
-                            	        			//var response = $.parseJSON(retValue.d);
-                            	        			var s= '<select role="select" class="FormElement" id="part.id" name="part.id">'
-                            	        			if (retValue && retValue.length) {
-                            	        				for (var i = 0, l = retValue.length; i < l; i++) {
-                            	        					s += '<option value="' + retValue[i]["id"] + '" title="' + retValue[i]["partDescription"] + '">' + retValue[i]["partNumber"] + '</option>';
-                                	        			}
-                                	        		}
-                            	        			return s + "</select>";
-                                    			}
+                            	 	    var retValue = $.parseJSON(data);
+                        	        	//var response = $.parseJSON(retValue.d);
+                        	        	var s= '<select role="select" class="FormElement" id="part.id" name="part.id">'
+                        	        	if (retValue && retValue.length) {
+                        	        	    for (var i = 0, l = retValue.length; i < l; i++) {
+                        	        			s += '<option value="' + retValue[i]["id"] + '" title="' + retValue[i]["partDescription"] + '">' + retValue[i]["partNumber"] + '</option>';
+                            	        	}
+                            	        }
+                        	        	return s + "</select>";
+                                	}
 
                              	}
                             },

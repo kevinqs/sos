@@ -4,7 +4,8 @@
 		</children>
 		<children title='直接物料' href="/sos/workPostPart/listAjax" focus='true'>
 		</children>
-				<children title='second'/>
+        <children title='工具' href="/sos/tool/listAjax" focus='true'>
+        </children>
 		<children title='third'>
 		    <children title='1.1'/>
 		    <children title='1.2'/>
