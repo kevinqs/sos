@@ -1,35 +1,8 @@
 		<script type="text/javascript">
             /* when the page has finished loading.. execute the follow */
  //           $(document).ready(function () {
-                // set on click events for non toolbar buttons
-                $("#btnAdd").click(function(){
-                  $("#work_post_part_list").jqGrid("editGridRow","new",
-                     {addCaption:'Create New Part',
-                     afterSubmit:afterSubmitEvent,
-                     closeAfterEdit:true,
-                     savekey:[true,13]});
-                });
 
-                $("#btnEdit").click(function(){
-                    var gr = $("#work_post_part_list").jqGrid('getGridParam','selrow');
-                    if( gr != null )
-                      $("#part_list").jqGrid('editGridRow',gr,
-                      {closeAfterEdit:true,
-                       afterSubmit:afterSubmitEvent
-                      });
-                    else
-                      alert("Please Select Row");
-                 });
-
-                 $("#btnDelete").click(function(){
-                   var gr = $("#work_post_part_list").jqGrid('getGridParam','selrow');
-                   if( gr != null )
-                     $("#part_list").jqGrid('delGridRow',gr,
-                      {afterSubmit:afterSubmitEvent});
-                   else
-                     alert("Please Select Row to delete!");
-                 });
-                jQuery("#work_post_part_list").jqGrid({
+	           jQuery("#work_post_part_list").jqGrid({
                   url:'/sos/workPostPart/jq_part_list',
                   editurl:'/sos/workPostPart/jq_edit_workPostpart',
                   datatype: "json",

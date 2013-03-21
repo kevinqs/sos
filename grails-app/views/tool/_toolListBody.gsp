@@ -1,40 +1,11 @@
 		<script type="text/javascript">
             /* when the page has finished loading.. execute the follow */
             $(document).ready(function () {
-                // set on click events for non toolbar buttons
-                $("#btnAdd").click(function(){
-                  $("#tool_list").jqGrid("editGridRow","new",
-                     {addCaption:'Create New Tool',
-                     afterSubmit:afterSubmitEvent,
-                     closeAfterEdit:true,
-                     savekey:[true,13]});
-                });
-
-                $("#btnEdit").click(function(){
-                    var gr = $("#tool_list").jqGrid('getGridParam','selrow');
-                    if( gr != null )
-                      $("#tool_list").jqGrid('editGridRow',gr,
-                      {closeAfterEdit:true,
-                       afterSubmit:afterSubmitEvent
-                      });
-                    else
-                      alert("Please Select Row");
-                 });
-
-                 $("#btnDelete").click(function(){
-                   var gr = $("#tool_list").jqGrid('getGridParam','selrow');
-                   if( gr != null )
-                     $("#tool_list").jqGrid('delGridRow',gr,
-                      {afterSubmit:afterSubmitEvent});
-                   else
-                     alert("Please Select Row to delete!");
-                 });
-                
                 jQuery("#tool_list").jqGrid({
                   url:'/sos/tool/jq_tool_list',
                   editurl:'/sos/tool/jq_edit_tool',
                   datatype: "json",
-                  width:758,
+                  width:658,
                   height:200,
                   altRows:true,
                   colNames:['<g:message code="workPostPart.id.label"/>',
@@ -44,8 +15,8 @@
                             '<g:message code="tool.parameter.label"/>', 
                             '<g:message code="tool.consumption.label"/>'],
                   colModel:[
-                    {name:'id', editable:false},
-                    {name:'sku', editable:true, editOptions:{size:50}},
+                    {name:'id', editable:false, width:30,},
+                    {name:'sku', editable:true, editOptions:{size:20}},
                     {name:'name', editable:true, editOptions:{size:50}},
                     {name:'model', editable:true, editOptions:{size:50}},
                     {name:'parameter', editable:true, editOptions:{size:50}},

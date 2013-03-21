@@ -594,3 +594,15 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+
+DIV.table-row {
+	color: black;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0;
+	text-align: center;
+	width: 96%;
+}

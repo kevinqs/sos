@@ -6,5 +6,4 @@ class WorkPostPart {
 	Integer amount
 	Integer stockAlert
 	String stationTool
-	
 }

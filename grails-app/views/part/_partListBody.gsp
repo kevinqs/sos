@@ -1,26 +1,6 @@
 		<script type="text/javascript">
             /* when the page has finished loading.. execute the follow */
             $(document).ready(function () {
-                $("#btnEdit").click(function(){
-                    var gr = $("#part_list").jqGrid('getGridParam','selrow');
-                    if( gr != null )
-                      $("#part_list").jqGrid('editGridRow',gr,
-                      {closeAfterEdit:true,
-                       afterSubmit:afterSubmitEvent
-                      });
-                    else
-                      alert("Please Select Row");
-                 });
-
-                 $("#btnDelete").click(function(){
-                   var gr = $("#part_list").jqGrid('getGridParam','selrow');
-                   if( gr != null )
-                     $("#part_list").jqGrid('delGridRow',gr,
-                      {afterSubmit:afterSubmitEvent});
-                   else
-                     alert("Please Select Row to delete!");
-                 });
-                
                 jQuery("#part_list").jqGrid({
                   url:'jq_part_list',
                   editurl:'jq_edit_part',
@@ -42,7 +22,18 @@
                   viewrecords: true,
                   gridview: true,
                   caption:"Part List",
-                  multiselect: true
+                  multiselect: true,
+                  edit : {
+                	     addCaption: "Add Record",
+                	     editCaption: "Edit Record",
+                	     bSubmit: "Submit",
+                	     bCancel: "Cancel",
+                	     bClose: "Close",
+                	     saveData: "Data has been changed! Save changes?",
+                	     bYes : "Yes",
+                	     bNo : "No",
+                	     bExit : "Cancel"
+                    	 }                  
                 });
 
                 
@@ -57,7 +48,6 @@
                         {afterSubmit:afterSubmitEvent}  // delete options
                     );
 
-//                $("#part_list").jqGrid('filterToolbar',{autosearch:true});
             });
 
             function afterSubmitEvent(response, postdata) {

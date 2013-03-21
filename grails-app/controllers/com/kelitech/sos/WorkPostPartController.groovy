@@ -57,7 +57,7 @@ class WorkPostPartController {
 				def partId = params.get("part.id");
 				part = new WorkPostPart(params)
 				if (! part.hasErrors() && part.save()) {
-					message = "PartAdded"
+					message = "Part Added"
 					id = part.id
 					state = "OK"
 				} else {
