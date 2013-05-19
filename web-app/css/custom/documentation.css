@@ -10,27 +10,31 @@ TABLE.TOC {
 	border: 1px solid #BBB;
 	border-collapse: collapse;
 	margin: 1em 0;
-	}
-	.TOC TR.rTitle TD{
-		font-size:		0.95em;
-		font-weight:	bold;
-		letter-spacing:	1px;
-		padding-top:	4px;
-		padding-bottom:	5px;
-		background:		#99B5B5;
-		color:			#FFF
-	}
-	.TOC TR.r0 {
-		background:	#FFF;
-	}
-	.TOC TR.r0 {
-		background:	#EEE;
-		}
-		.TOC TD {
-			padding: 2px 10px 4px;
-			white-space: nowrap;
-			border-left: 1px solid #BBB;
-		}
+}
+
+.TOC TR.rTitle TD{
+	font-size:		0.95em;
+	font-weight:	bold;
+	letter-spacing:	1px;
+	padding-top:	4px;
+	padding-bottom:	5px;
+	background:		#99B5B5;
+	color:			#FFF
+}
+
+.TOC TR.r0 {
+	background:	#FFF;
+}
+
+.TOC TR.r0 {
+    background:	#EEE;
+}
+
+.TOC TD {
+	padding: 2px 10px 4px;
+	white-space: nowrap;
+	border-left: 1px solid #BBB;
+}
 
 
 H5 {
@@ -41,32 +45,37 @@ H5 {
 	margin: 1em 0 1em;
 	border-bottom: 1px dotted #CCC;
 	}
-	H5.withNext {
-		border-bottom: none;
-		padding-bottom: 0;
-		margin-bottom: -1em;
-	}
-	H5 A.bm {
-		font-weight: bold;
-		color:#C30;
-	}
-	H5 EM {
-		font-style: normal;
-		font-size: 0.9em;
-		float: right;
-		margin-top: -1.4em;
-	}
+
+H5.withNext {
+	border-bottom: none;
+	padding-bottom: 0;
+	margin-bottom: -1em;
+}
+
+H5 A.bm {
+	font-weight: bold;
+	color:#C30;
+}
+
+H5 EM {
+	font-style: normal;
+	font-size: 0.9em;
+	float: right;
+	margin-top: -1.4em;
+}
 
 #navigation {
 	border-bottom: 1;
 }
 
+
 UL, OL {
-	}
-	LI {
-		padding-top: 2px;
-		padding-bottom: 3px;
-	}
+}
+
+LI {
+	padding-top: 2px;
+	padding-bottom: 3px;
+}
 
 
 /*
@@ -75,73 +84,85 @@ UL, OL {
 .ui-layout-west .ui-layout-content {
 	padding: 1ex 0.5em 2em 22px; /* need left-padding for +/- buttons */
 }
+
 UL#TOC {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	}
-	#TOC LI {
-		padding: 2px 0;
-		}
-		#TOC A {
-			color: #000;
-			display: block;
-			padding: 1px 0 2px 3px;
-			}
-			#TOC A:visited {
-				color: #000;
-			}
-			#TOC A:hover {
-				color: #000;
-				background-color: #FEC;
-				text-decoration: none;
-			}
-		#TOC LI UL {
-			list-style: none;
-			margin: 0;
-			margin-left: 1em;
-			padding: 0.25em 0;
-			}
-			#TOC LI UL LI {
-				font-size: 0.9em;
-				padding: 1px 0;
-				}
-				#TOC LI UL LI A {
-					padding-top: 0px;
-					padding-bottom: 1px;
-				}
+}
 
-	#TOC .tocBtn {
-		float:			left;
-		margin-left:	-17px; /* move button into left-margin */
-		margin-top:		2px;
-		width:			16px;
-		height:			16px;
-		cursor:			pointer;
-		background:		url(images/icon_tree_off.gif) no-repeat center;
-	}
+#TOC LI {
+	padding: 2px 0;
+}
+
+#TOC A {
+	color: #000;
+	display: block;
+	padding: 1px 0 2px 3px;
+}
+
+#TOC A:visited {
+	color: #000;
+}
+
+#TOC A:hover {
+	color: #000;
+	background-color: #FEC;
+	text-decoration: none;
+}
+
+#TOC LI UL {
+	list-style: none;
+	margin: 0;
+	margin-left: 1em;
+	padding: 0.25em 0;
+}
+
+#TOC LI UL LI {
+	font-size: 0.9em;
+	padding: 1px 0;
+}
+
+#TOC LI UL LI A {
+	padding-top: 0px;
+	padding-bottom: 1px;
+}
+
+#TOC .tocBtn {
+	float:			left;
+	margin-left:	-17px; /* move button into left-margin */
+	margin-top:		2px;
+	width:			16px;
+	height:			16px;
+	cursor:			pointer;
+	background:		url(images/icon_tree_off.gif) no-repeat center;
+}
 
 
 H2 {
 	margin-bottom: 0;
 }
+
 DIV.collapsible {
 	padding: 0.75em 3px 3px;
 	border: 1px solid #FFF; /* same as page-color */
 	border-top: none;
 	position: relative;
-	}
-	DIV.highlightCollapsible {
-		border: 1px dotted #566F6F; /* same as H2 border-bottom */
-		border-top: none;
-	}
-	DIV.highlightCollapsible ,
-	DIV.highlightCollapsible PRE {
-		background-color: #F2F6F4;
-	}
-	DIV.collapsible H4 {
-		margin-top: 0 !important; /* div has padding-top */
-	}
+}
+
+DIV.highlightCollapsible {
+	border: 1px dotted #566F6F; /* same as H2 border-bottom */
+	border-top: none;
+}
+
+DIV.highlightCollapsible ,
+DIV.highlightCollapsible PRE {
+	background-color: #F2F6F4;
+}
+
+DIV.collapsible H4 {
+	margin-top: 0 !important; /* div has padding-top */
+}
 
 SPAN.expander {
 	float:		right;
@@ -150,9 +171,10 @@ SPAN.expander {
 	height:		16px;
 	cursor:		pointer;
 	background:	url(images/icon_tree_on.gif) no-repeat center;
-	}
-	SPAN.expander_open   { background-image: url(images/icon_tree_off.gif); }
-	SPAN.expander_closed { background-image: url(images/icon_tree_on.gif); }
+}
+
+SPAN.expander_open   { background-image: url(images/icon_tree_off.gif); }
+SPAN.expander_closed { background-image: url(images/icon_tree_on.gif); }
 
 
 /*
@@ -181,6 +203,7 @@ SPAN.expander {
 	filter: alpha(opacity=10);
 	background-color: #999;
 }
+
 .ui-layout-resizer-sliding:hover {
 	opacity: 1;
 	filter: alpha(opacity=100);
@@ -217,26 +240,34 @@ SPAN.expander {
 .ui-layout-toggler-east-open    { background: url(images/toggle-rt.gif) no-repeat center left; }
 
 /* 'CONTENTS' TOC TOGGLER BUTTON */
-	.ui-layout-resizer-west-closed:hover {
-		background-color: #E6E6E6;
-		}
-		.ui-layout-resizer-west-closed:hover .content {
-			color: #C30;
-		}
-	.ui-layout-toggler-west-closed {
-		background-color:	#EEE;
-		border-top:			1px solid #FFF;
-		border-left:		1px solid #FFF;
-		border-bottom:		1px solid #677;
-		}
-		.ui-layout-toggler-west-closed:hover {
-			background-color: #F6F6F6;
-		}
-		.ui-layout-toggler-west-closed .content {
-			color:			#033;
-			font-size:		12px !important;
-			font-weight:	bold;
-			text-transform:	uppercase;
-			text-align:		center;
-			padding-right:	1px;
-		}
+.ui-layout-resizer-west-closed:hover {
+	background-color: #E6E6E6;
+}
+
+.ui-layout-resizer-west-closed:hover .content {
+	color: #C30;
+}
+
+.ui-layout-toggler-west-closed {
+	background-color:	#EEE;
+	border-top:			1px solid #FFF;
+	border-left:		1px solid #FFF;
+	border-bottom:		1px solid #677;
+}
+
+.ui-layout-toggler-west-closed:hover {
+    background-color: #F6F6F6;
+}
+
+.ui-layout-toggler-west-closed .content {
+	color:			#033;
+	font-size:		12px !important;
+	font-weight:	bold;
+	text-transform:	uppercase;
+	text-align:		center;
+	padding-right:	1px;
+}
+		
+.nav-tabs {
+    margin-bottom: 0;
+}

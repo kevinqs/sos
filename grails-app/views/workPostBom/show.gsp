@@ -23,6 +23,17 @@
 			</g:if>
 			<ol class="property-list workPostBom">
 			
+				<g:if test="${workPostBomInstance?.accessories}">
+				<li class="fieldcontain">
+					<span id="accessories-label" class="property-label"><g:message code="workPostBom.accessories.label" default="Accessories" /></span>
+					
+						<g:each in="${workPostBomInstance.accessories}" var="a">
+						<span class="property-value" aria-labelledby="accessories-label"><g:link controller="accessory" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${workPostBomInstance?.approval}">
 				<li class="fieldcontain">
 					<span id="approval-label" class="property-label"><g:message code="workPostBom.approval.label" default="Approval" /></span>
@@ -59,6 +70,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${workPostBomInstance?.fixtures}">
+				<li class="fieldcontain">
+					<span id="fixtures-label" class="property-label"><g:message code="workPostBom.fixtures.label" default="Fixtures" /></span>
+					
+						<g:each in="${workPostBomInstance.fixtures}" var="f">
+						<span class="property-value" aria-labelledby="fixtures-label"><g:link controller="fixture" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${workPostBomInstance?.mainParts}">
 				<li class="fieldcontain">
 					<span id="mainParts-label" class="property-label"><g:message code="workPostBom.mainParts.label" default="Main Parts" /></span>
@@ -66,6 +88,64 @@
 						<g:each in="${workPostBomInstance.mainParts}" var="m">
 						<span class="property-value" aria-labelledby="mainParts-label"><g:link controller="workPostPart" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.ppes}">
+				<li class="fieldcontain">
+					<span id="ppes-label" class="property-label"><g:message code="workPostBom.ppes.label" default="Ppes" /></span>
+					
+						<g:each in="${workPostBomInstance.ppes}" var="p">
+						<span class="property-value" aria-labelledby="ppes-label"><g:link controller="PPE" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.serialNumber}">
+				<li class="fieldcontain">
+					<span id="serialNumber-label" class="property-label"><g:message code="workPostBom.serialNumber.label" default="Serial Number" /></span>
+					
+						<span class="property-value" aria-labelledby="serialNumber-label"><g:fieldValue bean="${workPostBomInstance}" field="serialNumber"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.tools}">
+				<li class="fieldcontain">
+					<span id="tools-label" class="property-label"><g:message code="workPostBom.tools.label" default="Tools" /></span>
+					
+						<g:each in="${workPostBomInstance.tools}" var="t">
+						<span class="property-value" aria-labelledby="tools-label"><g:link controller="tool" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.workPost}">
+				<li class="fieldcontain">
+					<span id="workPost-label" class="property-label"><g:message code="workPostBom.workPost.label" default="Work Post" /></span>
+					
+						<span class="property-value" aria-labelledby="workPost-label"><g:fieldValue bean="${workPostBomInstance}" field="workPost"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.workPostName}">
+				<li class="fieldcontain">
+					<span id="workPostName-label" class="property-label"><g:message code="workPostBom.workPostName.label" default="Work Post Name" /></span>
+					
+						<span class="property-value" aria-labelledby="workPostName-label"><g:fieldValue bean="${workPostBomInstance}" field="workPostName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${workPostBomInstance?.workSection}">
+				<li class="fieldcontain">
+					<span id="workSection-label" class="property-label"><g:message code="workPostBom.workSection.label" default="Work Section" /></span>
+					
+						<span class="property-value" aria-labelledby="workSection-label"><g:fieldValue bean="${workPostBomInstance}" field="workSection"/></span>
 					
 				</li>
 				</g:if>

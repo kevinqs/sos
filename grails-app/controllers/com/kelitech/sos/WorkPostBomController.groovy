@@ -1,102 +1,107 @@
 package com.kelitech.sos
 
-import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.JSON;
+
 
 class WorkPostBomController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
+	public static final String WORK_POST_BOM_INSTANCE = "workPostBomInstance"
+	
+	def listAjax() {
+		render(template: 'listBody')
+	}
+	
+	def workPostBomDetails () {
+		def wpbId = params.wpbId
+		def id = params.id
+		def author = params.author
+		def workPostBoms = new WorkPostBom();
+		workPostBoms.author = "Kevin Qiu"
+		if (wpbId != "new") {
+			workPostBoms = WorkPostBom.get(wpbId)
+		}
+		
+		session[WORK_POST_BOM_INSTANCE] = workPostBoms
+		render(view: "details", model: [workPostBomInstance : workPostBoms])
+	}
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [workPostBomInstanceList: WorkPostBom.list(params), workPostBomInstanceTotal: WorkPostBom.count()]
-    }
+	def jq_bom_list = {
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		def workpostBoms = WorkPostBom.list(params)
+		def jsonCells = workpostBoms.collect {
+			[cell: [it.id,
+					it.workPostName,
+					it.workSection,
+					it.workPost,
+					it.serialNumber,
+					it.author,
+					it.auditor,
+					it.approver,
+					it.effectiveDate
+				], id: it.id]
+		}
+		def jsonData= [rows: jsonCells]
+		render jsonData as JSON
+	}
 
-    def create() {
-        [workPostBomInstance: new WorkPostBom(params)]
-    }
+	def jq_edit_workPostBom = {
+		def bom = null
+		def message = ""
+		def state = "FAIL"
+		def id = params.id
+		def idList = []
+		def isEmpty = false
+		if (id) {
+			isEmpty = true
+		}
 
-    def save() {
-        def workPostBomInstance = new WorkPostBom(params)
-        if (!workPostBomInstance.save(flush: true)) {
-            render(view: "create", model: [workPostBomInstance: workPostBomInstance])
-            return
-        }
+		// determine our action
+		switch (params.oper) {
+			case 'add':
+				bom = new WorkPostBom(params)
+				if (! bom.hasErrors() && bom.save()) {
+					message = "Part Added"
+					id = part.id
+					state = "OK"
+				} else {
+					message = "Could Not Save Part"
+				}
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), workPostBomInstance.id])
-        redirect(action: "show", id: workPostBomInstance.id)
-    }
+				break;
+			case 'del':
+			// check customer exists
+				id = params.id;
+				idList = id.tokenize(",")
+				for (partId in idList) {
+					bom = WorkPostBom.get(partId)
+					if (bom) {
+						// delete part
+						bom.delete()
+						state = "OK"
+					}
+				}
+				break;
+			default:
+			// default edit action
+			// first retrieve the part by its ID
+				bom = WorkPostBom.get(params.id)
+				if (bom) {
+					// set the properties according to passed in parameters
+					bom.properties = params
+					if (! bom.hasErrors() && bom.save()) {
+						id = part.id
+						state = "OK"
+					} else {
+						message = "Could Not Update Part"
+					}
+				}
+				break;
+		}
 
-    def show(Long id) {
-        def workPostBomInstance = WorkPostBom.get(id)
-        if (!workPostBomInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "list")
-            return
-        }
+		def response = [message:message,state:state,id:id]
 
-        [workPostBomInstance: workPostBomInstance]
-    }
-
-    def edit(Long id) {
-        def workPostBomInstance = WorkPostBom.get(id)
-        if (!workPostBomInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [workPostBomInstance: workPostBomInstance]
-    }
-
-    def update(Long id, Long version) {
-        def workPostBomInstance = WorkPostBom.get(id)
-        if (!workPostBomInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "list")
-            return
-        }
-
-        if (version != null) {
-            if (workPostBomInstance.version > version) {
-                workPostBomInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'workPostBom.label', default: 'WorkPostBom')] as Object[],
-                          "Another user has updated this WorkPostBom while you were editing")
-                render(view: "edit", model: [workPostBomInstance: workPostBomInstance])
-                return
-            }
-        }
-
-        workPostBomInstance.properties = params
-
-        if (!workPostBomInstance.save(flush: true)) {
-            render(view: "edit", model: [workPostBomInstance: workPostBomInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), workPostBomInstance.id])
-        redirect(action: "show", id: workPostBomInstance.id)
-    }
-
-    def delete(Long id) {
-        def workPostBomInstance = WorkPostBom.get(id)
-        if (!workPostBomInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            workPostBomInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'workPostBom.label', default: 'WorkPostBom'), id])
-            redirect(action: "show", id: id)
-        }
-    }
+		render response as JSON
+	}
 }

@@ -29,11 +29,22 @@ modules = {
 		
 	}
 	
+	bootstrap {
+		dependsOn 'jquery18'
+		resource url: 'css/bootstrap/bootstrap.css'
+		resource url: 'css/bootstrap/bootstrap-responsive.css'
+		resource url: 'js/bootstrap/bootstrap.js'
+	}
+	
 	custom {
 		dependsOn 'jquery18'
 		resource url:'js/jquery-layout/jquery.layout-latest.js'
 		resource url:'css/custom/documentation.css'
 		resource url:'css/custom/global.css'
 		resource url:'css/custom/jquery-layout-default.css'
+	}
+	
+	stacktrace {
+		resource url: 'js/stacktrace/stacktrace.js'
 	}
 }

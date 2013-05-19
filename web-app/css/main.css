@@ -132,7 +132,7 @@ img {
 	text-indent: -9999px;
 }
 
-/* NAVIGATION MENU */
+/* NAVIGATION MENU 
 
 .nav {
 	background-color: #efefef;
@@ -142,7 +142,7 @@ img {
 	        box-shadow: 0 0 3px 1px #aaaaaa;
 	zoom: 1;
 }
-
+*/
 .nav ul {
 	overflow: hidden;
 	padding-left: 0;
@@ -200,6 +200,10 @@ img {
 
 .nav a.create {
 	background-image: url(../images/skin/database_add.png);
+}
+
+.nav-tabs {
+    margin-bottom: 0;
 }
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
@@ -605,4 +609,59 @@ DIV.table-row {
 	padding: 0;
 	text-align: center;
 	width: 96%;
+}
+
+
+
+/* BootStrap */
+
+
+
+form .line {
+    margin-bottom: 5px;
+}
+
+form div  label{
+    font-size:     11px;
+}
+
+.form-horizontal .control-group {
+  margin-bottom:0px;
+  *zoom: 1;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  display: inline-block;
+  height: 13px;
+  font-size: 11px;
+  line-height: 15px;
+  color: #555555;
+  vertical-align: middle;
+}
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
 }

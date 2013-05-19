@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <navigationtree>
-        <children title='岗位物料单' href="/sos/workPostMaterialList/materialList" focus='true'>
-        </children>
-    	<children title='零件' href="/sos/part/listAjax" focus='true' activate="true">
+        <children title='岗位物料单' href="/sos/workPostMaterialList/materialList" focus='true'/>
+        <children title='岗位物料单表' href="/sos/workPostBom/listAjax" focus='true'/>
+        <children title='零件' href="/sos/part/listAjax" focus='true' activate="true">
 		</children>
 		<children title='直接物料' href="/sos/workPostPart/listAjax" focus='true'>
 		</children>

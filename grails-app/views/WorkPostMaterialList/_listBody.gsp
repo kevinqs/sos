@@ -1,4 +1,5 @@
 <g:javascript src="sos/workPostMaterialList.js"/>
+<r:require modules="bootstrap"/>
 <script type="text/javascript">
 
   var toolTableTitle = '<g:message code="tool.list.title"/>';
